@@ -1,12 +1,13 @@
 PImage img;
 
-void setup(){
-  img = loadImage("hukuoka-tower.jpg");
-  size(728, 484);
-  println(img.height);
-  println(img.width);
+void settings() {
+  img = loadImage("correct/hukuoka-tower.jpg");
+  size(img.width, img.height);
 }
 
-void draw(){
+void setup() {
+}
+
+void draw() {
   image(img, 0, 0);
 }
