@@ -5,12 +5,12 @@ void fit_image() {
   int image_width = 0, image_height = 0;
   if (current_image.width >= current_image.height)
   {
-    ratio = image_canvas_scale / current_image.width;
+    ratio = (float)image_canvas_scale / (float)current_image.width;
     image_width = image_canvas_scale;
     image_height = int(current_image.height * ratio);
   } else if (current_image.width < current_image.height)
   {
-    ratio = image_canvas_scale / current_image.height;
+    ratio = (float)image_canvas_scale / (float)current_image.height;
     image_height = image_canvas_scale;
     image_width = int(current_image.width * ratio);
   }
