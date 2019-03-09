@@ -57,8 +57,29 @@ void setup()
   update_image();
   
   image_info_table = new HashMap<String, ImageInfo>();
-  image_info_table.put(fukuoka_dir+"/ume.jpg", new ImageInfo("請け意気", "福岡"));  // example
-  
+
+  image_info_table.put(other_dir+"/aburasoba.jpg", new ImageInfo("油そば", "東京"));
+　　image_info_table.put(other_dir+"/aburasoba2.jpg", new ImageInfo("油そば", "東京"));
+　　image_info_table.put(other_dir+"/doutonnbori.jpg", new ImageInfo("道頓堀", "大阪"));
+　　image_info_table.put(other_dir+"/fushimiinari.jpg", new ImageInfo("伏見稲荷大社", "京都"));
+　　image_info_table.put(other_dir+"/green-land.jpg", new ImageInfo("三井グリーンランド", "熊本"));
+　　image_info_table.put(other_dir+"/himejizyo.jpg", new ImageInfo("姫路城", "兵庫"));
+　　image_info_table.put(other_dir+"/hokkaido.jpeg", new ImageInfo("北海道の図", "北海道"));
+　　image_info_table.put(other_dir+"/itukushimazinzya.jpeg", new ImageInfo("厳島神社", "広島"));
+　　image_info_table.put(other_dir+"/kaminarimon.jpg", new ImageInfo("浅草寺", "東京"));
+　　image_info_table.put(other_dir+"/kaparu.jpg", new ImageInfo("カパル", "埼玉"));
+　　image_info_table.put(other_dir+"/nagoya-station.jpg", new ImageInfo("名古屋駅", "愛知"));
+　　image_info_table.put(other_dir+"/nagoyazyo.jpg", new ImageInfo("名古屋城", "愛知"));
+　　image_info_table.put(other_dir+"/ropongi.jpg", new ImageInfo("六本木ヒルズ", "東京"));
+　　image_info_table.put(other_dir+"/saigou-takamori.jpg", new ImageInfo("西郷隆盛", "鹿児島"));
+　　image_info_table.put(other_dir+"/shimane_kensho.png", new ImageInfo("島根県章", "島根"));
+　　image_info_table.put(other_dir+"/sky-tree.jpg", new ImageInfo("東京スカイツリー", "東京"));
+　　image_info_table.put(other_dir+"/syurizyou.jpg", new ImageInfo("首里城", "沖縄"));
+　　image_info_table.put(other_dir+"/tokeidai.jpg", new ImageInfo("時計台", "北海道"));
+　　image_info_table.put(other_dir+"/tokyo-station.jpg", new ImageInfo("東京駅", "東京"));
+　　image_info_table.put(other_dir+"/tokyo-tower.jpg", new ImageInfo("東京タワー", "東京"));
+
+
   unit_timer = new Timer(5*1000);
   game_timer = new Timer(5*1000*image_names.size());
   
