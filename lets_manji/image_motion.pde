@@ -25,9 +25,10 @@ String pop_next_image_name()
   return next_name;
 }
 
+
 void update_image()
 {
-  String next_image_name = pop_next_image_name();
+  next_image_name = pop_next_image_name();
   current_image = loadImage(next_image_name);
   fit_image();
   PVector image_pos = gen_default_image_pos();
@@ -39,32 +40,13 @@ void update_image()
 
 PVector gen_default_image_pos()
 {
-  PVector result = new PVector(width/2 - current_image.width/2, height*3/5 - current_image.height/2);
+  PVector result = new PVector(width/2, height*3/5);
   return result;
 }
 
-//void apper_image()
-//{
-
-//  imageMode(CENTER);
-//  float image_center_x = width / 2;
-//  float image_center_y = height / 5;
-//  draw_background();
-//  if (size_prm_x <= image_canvas_scale && size_prm_y <= image_canvas_scale) {
-//    image(current_image, image_x, image_y);
-//  }
-//  if (image_y > -image_y) {
-//    size_plm_x *= 1.1;
-//    size_plm_y *= 1.1;
-//    if (int(size_plm_x) > 0 && int(size_plm_y) > 0) {
-//      img.resize(int(size_plm_x), int(size_plm_y));
-//    }
-//    y -= 10;
-//  } else {
-//    has_clicked = false;
-//    y = height/2;
-//    size_plm_x = width;
-//    size_plm_y = height;
-//    img = loadImage("hukuoka-tower.jpg");
-//  }
-//}
+void appear_image(){
+   appear_image_tf.transform();
+   imageMode(CENTER);
+   image(current_image, image_x, image_y);
+   imageMode(CORNER);
+}
