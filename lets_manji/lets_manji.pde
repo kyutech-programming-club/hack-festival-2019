@@ -28,8 +28,8 @@ Area fukuoka_area, other_area;
 
 void setup()
 {
-  size(800, 800);
-  background(255);
+  size(1600, 1000);
+  background(0, 0, 255);
 
   leap = new LeapMotion(this).allowGestures(fukuoka_gesture + ", " + other_gesture);
 
@@ -38,7 +38,7 @@ void setup()
   // Load image-names and judges
   image_judge_table = new HashMap<String, Boolean>();
 
-  String data_dirname = "/home/tanacchi/works/hack-festival-2018/lets_manji/data/";
+  String data_dirname = "/home/wata/works/my_works/kyutech_programming_club/hack-festival-2018/lets_manji/data/";
   File fukuoka_dir = new File(data_dirname + "fukuoka_images");
   for (File fukuoka_image : fukuoka_dir.listFiles())
   {
@@ -63,7 +63,7 @@ void setup()
 
 void draw()
 {
-  background(255);
+  draw_background();
   image(current_image, image_x, image_y);
 
   game_timer.start();
@@ -73,8 +73,8 @@ void draw()
   unit_timer.update();
 
   draw_time_gage();
-  fukuoka_area.draw(color(255, 0, 0));
-  other_area.draw(color(0, 0, 255));
+  //fukuoka_area.draw(color(255, 0, 0));
+  //other_area.draw(color(0, 0, 255));
   
   for (Hand hand : leap.getHands())
   {
