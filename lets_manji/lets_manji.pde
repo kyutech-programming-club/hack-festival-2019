@@ -228,8 +228,8 @@ void draw()
     
       break;
     case end:
-        result_display.activate(result_display.finish);
-        break;
+      result_display.activate(score_board.get() > 150 ? result_display.good_finish : result_display.bad_finish);
+      break;
   }
   if (result_display.is_active())
   {

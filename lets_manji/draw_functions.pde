@@ -24,10 +24,11 @@ void draw_max_canvas(){
 
 class ResultDisplay
 {
-  final int correct   = 0;
-  final int incorrect = 1;
-  final int timeup    = 2;
-  final int finish    = 3;
+  final int correct     = 0;
+  final int incorrect   = 1;
+  final int timeup      = 2;
+  final int good_finish = 3;
+  final int bad_finish  = 4;
   
   int mode;
   Timer timer;
@@ -61,9 +62,11 @@ class ResultDisplay
       case timeup:
         display_timeup();
         break;
-      case finish:
-        display_finish();
+      case good_finish:
+        display_good_finish();
         break;
+      case bad_finish:
+        display_bad_finish();
     }
     if (timer.should_reset())
     {
@@ -94,9 +97,17 @@ class ResultDisplay
     text("Timeup", width/2, height/2);
   }
 
-  void display_finish()
+  void display_good_finish()
   {
-    background(0, 0, 0, 200);
+    background(0, 255, 255, 200);
+    textSize(48);
+    text("Thank you for playing", width/2, height/2);
+    score_board.draw();
+  }
+
+  void display_bad_finish()
+  {
+    background(255, 255, 0, 200);
     textSize(48);
     text("Thank you for playing", width/2, height/2);
     score_board.draw();
