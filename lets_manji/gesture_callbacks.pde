@@ -14,18 +14,24 @@ void leapOnScreenTapGesture(ScreenTapGesture gesture)
 class GestureSocket
 {
   boolean can_accessed;
+  boolean is_locked; 
+  
   String  gesture_name;
   
   GestureSocket()
   {
     gesture_name = "";
     can_accessed = false;
+    is_locked    = false;
   }
   
   void setGesture(String name)
   {
-    gesture_name = name;
-    can_accessed = true;
+    if (!is_locked)
+    {
+      gesture_name = name;
+      can_accessed = true;
+    }
   }
   
    String getGesture()
@@ -44,5 +50,15 @@ class GestureSocket
    boolean can_accessed()
    {
      return can_accessed;
+   }
+   
+   void lock()
+   {
+     is_locked = true;
+   }
+   
+   void release()
+   {
+     is_locked = false;
    }
 }

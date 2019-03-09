@@ -66,6 +66,12 @@ void setup()
 
 void draw()
 {
+  if (result_display.is_active())
+  {
+    result_display.display();
+    return;
+  }
+  
   background(255);
   image(current_image, image_x, image_y);
 
@@ -94,7 +100,7 @@ void draw()
   }
   if (unit_timer.should_reset())  // Unit is timed-up
   {
-    result_display.activate(false);
+    result_display.activate(result_display.timeup);
     update_image();
   }
   if (gesture_socket.can_accessed())
@@ -106,14 +112,14 @@ void draw()
       println("正解！！");
       background(0, 0, 0, 200);
       text("正解！！", width/2, height/2);
-      result_display.activate(true);
+      result_display.activate(result_display.correct);
     }
     else
     {
       println("あひーーーー");
       background(0, 0, 0, 200);
       text("あひ！！", width/2, height/2);
-      result_display.activate(false);
+      result_display.activate(result_display.incorrect);
     }
     update_image();
   }

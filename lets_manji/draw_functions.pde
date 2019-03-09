@@ -28,6 +28,7 @@ class ResultDisplay
     mode = m;
     timer.start();
     is_active = true;
+    gesture_socket.lock();
   }
   
   void display()
@@ -48,6 +49,8 @@ class ResultDisplay
     if (timer.should_reset())
     {
       is_active = false;
+      unit_timer.reset();
+      gesture_socket.release();
     }
   }
  
