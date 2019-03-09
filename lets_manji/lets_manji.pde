@@ -24,6 +24,7 @@ String correct_gesture;
 final String fukuoka_gesture = "swipe";
 final String other_gesture   = "screen_tap";
 
+ResultDisplay result_display;
 Area fukuoka_area, other_area;
 
 void setup()
@@ -57,6 +58,8 @@ void setup()
   unit_timer = new Timer(5*1000);
   game_timer = new Timer(5*1000*image_names.size());
   
+  result_display = new ResultDisplay(3000);
+  
   fukuoka_area = new Area(width/4,   height/4, 100, 100);
   other_area   = new Area(width*3/4, height/4, 100, 100);
 }
@@ -85,22 +88,39 @@ void draw()
   fill(0, 200, 0);
   ellipse(right_hand_pos.x, right_hand_pos.y, 25, 25);
   
-  if (image_names.size() == 0 || game_timer.should_reset())
+  if (image_names.size() == 0 || game_timer.should_reset()) 
   {
     exit_game();
   }
-  if (unit_timer.should_reset())
+  if (unit_timer.should_reset())  // Unit is timed-up
   {
-    String answer = get_answer_with_hand();
-    if (answer == correct_gesture)
+    result_display.activate(false);
+    update_image();
+  }
+  if (gesture_socket.can_accessed())
+  {
+    String gesture = gesture_socket.getGesture();
+    println(gesture + " detected.");
+    if (gesture == correct_gesture)
     {
-      println("GOOD");
+      println("正解！！");
+      background(0, 0, 0, 200);
+      text("正解！！", width/2, height/2);
+      result_display.activate(true);
     }
     else
     {
-      println("BAD");
+      println("あひーーーー");
+      background(0, 0, 0, 200);
+      text("あひ！！", width/2, height/2);
+      result_display.activate(false);
     }
     update_image();
+  }
+  
+  if (result_display.is_active())
+  {
+    result_display.display();
   }
 }
 
@@ -110,6 +130,6 @@ void exit_game()
   fill(0);
   println("Finish..");
   text("Thank you for playing !", width/2, height/2);
-  delay(3000);
+  delay(10000);
   exit();
 }
