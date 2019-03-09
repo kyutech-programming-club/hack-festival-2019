@@ -24,6 +24,8 @@ String correct_gesture;
 final String fukuoka_gesture = "swipe";
 final String other_gesture   = "screen_tap";
 
+Area fukuoka_area, other_area;
+
 void setup()
 {
   size(800, 800);
@@ -54,6 +56,9 @@ void setup()
   
   unit_timer = new Timer(5*1000);
   game_timer = new Timer(5*1000*image_names.size());
+  
+  fukuoka_area = new Area(width/4,   height/4, 100, 100);
+  other_area   = new Area(width*3/4, height/4, 100, 100);
 }
 
 void draw()
@@ -68,26 +73,34 @@ void draw()
   unit_timer.update();
 
   draw_time_gage();
-
+  fukuoka_area.draw(color(255, 0, 0));
+  other_area.draw(color(0, 0, 255));
+  
+  for (Hand hand : leap.getHands())
+  {
+    hand.draw();
+  }
+  
+  PVector right_hand_pos = get_right_hand_pos();
+  fill(0, 200, 0);
+  ellipse(right_hand_pos.x, right_hand_pos.y, 25, 25);
+  
   if (image_names.size() == 0 || game_timer.should_reset())
   {
     exit_game();
   }
   if (unit_timer.should_reset())
   {
-    update_image();
-  }
-  if (gesture_socket.can_accessed())
-  {
-    String detected_gesture = gesture_socket.getGesture();
-    if (correct_gesture == detected_gesture)
+    String answer = get_answer_with_hand();
+    if (answer == correct_gesture)
     {
-      println("Result: Good !!!!!!!");
+      println("GOOD");
     }
     else
     {
-      println("Result: Bad !!!!!!!");    
+      println("BAD");
     }
+    update_image();
   }
 }
 
