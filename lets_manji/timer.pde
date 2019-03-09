@@ -13,6 +13,7 @@ class Timer
   {
     if (should_reset())
     {
+      println("RESET!!!");
       start = millis();
     }
   }
