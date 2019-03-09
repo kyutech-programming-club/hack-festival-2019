@@ -17,6 +17,8 @@ HashMap<String, Boolean> image_judge_table;
 List<String> image_names;
 
 PImage current_image;
+int image_x, image_y;
+
 String correct_gesture;
 
 final String fukuoka_gesture = "swipe";
@@ -57,7 +59,7 @@ void setup()
 void draw()
 {
   background(255);
-  image(current_image,  width/2 - current_image.width/2, height/2);
+  image(current_image, image_x, image_y);
 
   game_timer.start();
   unit_timer.start();

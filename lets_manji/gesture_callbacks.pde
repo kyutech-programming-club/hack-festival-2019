@@ -1,15 +1,15 @@
-void leapOnSwipeGesture(SwipeGesture gesture, int state)
-{
-  if (state == 3)
-  {
-    gesture_socket.setGesture(fukuoka_gesture);
-  }
-}
+//void leapOnSwipeGesture(SwipeGesture gesture, int state)
+//{
+//  if (state == 3)
+//  {
+//    gesture_socket.setGesture(fukuoka_gesture);
+//  }
+//}
 
-void leapOnScreenTapGesture(ScreenTapGesture gesture)
-{
-  gesture_socket.setGesture(other_gesture);
-}
+//void leapOnScreenTapGesture(ScreenTapGesture gesture)
+//{
+//  gesture_socket.setGesture(other_gesture);
+//}
 
 class GestureSocket
 {
