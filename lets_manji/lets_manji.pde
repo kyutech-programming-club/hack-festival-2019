@@ -56,7 +56,7 @@ void setup()
 
 String pop_next_image_name()
 {
-  int selected_index = 0;  // TODO: Make Random !!!!!!
+  int selected_index = (int)random(image_names.size());
   String next_name = image_names.get(selected_index);
   image_names.remove(selected_index);
   return next_name;
@@ -66,6 +66,12 @@ void draw()
 {
   background(0);
 
+  if (image_names.size() > 0)
+  {
+    String image_name = pop_next_image_name();
+    boolean judge = image_judge_table.get(image_name);
+    println("From table : " + image_name + " : " + judge);
+  }
   game_timer.start();
   unit_timer.start();
 
