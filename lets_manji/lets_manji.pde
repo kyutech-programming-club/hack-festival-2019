@@ -16,6 +16,8 @@ GestureSocket gesture_socket;
 HashMap<String, Boolean> image_judge_table;
 List<String> image_names;
 
+HashMap<String, ImageInfo> image_info_table;
+
 PImage current_image;
 int image_x, image_y;
 
@@ -53,6 +55,9 @@ void setup()
   String[] string_list_raw = image_judge_table.keySet().toArray(new String[image_judge_table.size()]);
   image_names = new ArrayList<String>(Arrays.asList(string_list_raw));
   update_image();
+  
+  image_info_table = new HashMap<String, ImageInfo>();
+  image_info_table.put(fukuoka_dir+"/ume.jpg", new ImageInfo("請け意気", "福岡"));  // example
   
   unit_timer = new Timer(5*1000);
   game_timer = new Timer(5*1000*image_names.size());
