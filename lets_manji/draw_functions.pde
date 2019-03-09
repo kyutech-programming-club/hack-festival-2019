@@ -27,6 +27,7 @@ class ResultDisplay
   final int correct   = 0;
   final int incorrect = 1;
   final int timeup    = 2;
+  final int finish    = 3;
   
   int mode;
   Timer timer;
@@ -60,6 +61,9 @@ class ResultDisplay
       case timeup:
         display_timeup();
         break;
+      case finish:
+        display_finish();
+        break;
     }
     if (timer.should_reset())
     {
@@ -72,19 +76,30 @@ class ResultDisplay
   void display_correct()
   {
     background(0 , 0, 0, 250);
-    text("正解！！", width/2, height/2);
+    textSize(48);
+    text("Correct", width/2, height/2);
   }
 
   void display_incorrect()
   {
     background(0, 0, 0, 200);
-    text("あひーー", width/2, height/2);
+    textSize(48);
+    text("Incorrect", width/2, height/2);
   }
   
   void display_timeup()
   {
     background(0, 0, 0, 200);
-    text("時間切れ", width/2, height/2);
+    textSize(48);
+    text("Timeup", width/2, height/2);
+  }
+
+  void display_finish()
+  {
+    background(0, 0, 0, 200);
+    textSize(48);
+    text("Thank you for playing", width/2, height/2);
+    score_board.draw();
   }
 
   boolean is_active()
