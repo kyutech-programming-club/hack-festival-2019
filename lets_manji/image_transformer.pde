@@ -25,15 +25,23 @@ class ImageTransformer
     }
 
     float rate = (float)timer.duration() / (float)timer.time_limit;
-    PVector pos_diff = next_pos.sub(prev_pos);
-    PVector current_pos = prev_pos.add(pos_diff.mult(rate));
+    
+    PVector sub_next_pos = next_pos.copy();
+    PVector sub_prev_pos = prev_pos.copy();
+  
+    PVector pos_diff = sub_next_pos.sub(prev_pos);
+    PVector current_pos = sub_prev_pos.add(pos_diff.mult(rate));
+    
     image_x = (int)current_pos.x;
     image_y = (int)current_pos.y;
-    //println(timer.duration());
-    //println("x = " + image_x + ", y = " + image_y);
+   
 
-    PVector size_diff = next_size.sub(prev_size);
-    PVector current_size = prev_size.add(size_diff.mult(rate));
+    PVector sub_next_size = next_size.copy();
+    PVector sub_prev_size = prev_size.copy();
+  
+    PVector size_diff = sub_next_size.sub(prev_size);
+    PVector current_size = sub_prev_size.add(size_diff.mult(rate));
+    
     if((int)current_size.x > 0 && (int)current_size.y > 0){
       current_image.resize((int)current_size.x, (int)current_size.y);
     }
