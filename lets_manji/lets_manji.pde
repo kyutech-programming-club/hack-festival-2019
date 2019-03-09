@@ -19,7 +19,7 @@ List<String> image_names;
 void setup()
 {
   size(800, 800);
-  background(0);
+  background(255);
 
   leap = new LeapMotion(this).allowGestures("swipe, key_tap");
 
@@ -64,7 +64,7 @@ String pop_next_image_name()
 
 void draw()
 {
-  background(0);
+  background(255);
 
   if (image_names.size() > 0)
   {
@@ -78,10 +78,14 @@ void draw()
   game_timer.update();
   unit_timer.update();
 
+  draw_time_gage();
+
   int duration = unit_timer.duration();
+  fill(0);
   text("duration : " + duration, width/2, height/2);
   if (unit_timer.should_reset())
   {
+    fill(0);
     println("reset !");
   }
 
