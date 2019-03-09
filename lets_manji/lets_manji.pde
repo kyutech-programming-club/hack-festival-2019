@@ -48,7 +48,7 @@ void setup()
   // Load image-names and judges
   image_judge_table = new HashMap<String, Boolean>();
 
-  String data_dirname = "/home/ryuto/hack-festival-2018/lets_manji/data/";
+  String data_dirname = "/home/tanacchi/works/hack-festival-2018/lets_manji/data/";
   File fukuoka_dir = new File(data_dirname + "fukuoka_images");
   for (File fukuoka_image : fukuoka_dir.listFiles())
   {
@@ -191,12 +191,12 @@ void draw()
       if (unit_timer.should_reset())  // Unit is timed-up
       {
         score_board.toggle(ScoreBoard.reduce);
+        result_display.activate(result_display.timeup);
         if (image_names.size() == 0 || game_timer.should_reset()) 
         {
           mode = end;
           return;
         }
-        result_display.activate(result_display.timeup);
         update_image();
       }
       if (gesture_socket.can_accessed())
@@ -217,6 +217,11 @@ void draw()
           text("あひ！！", width/2, height/2);
           result_display.activate(result_display.incorrect);
           score_board.toggle(ScoreBoard.reduce);
+        }
+        if (image_names.size() == 0 || game_timer.should_reset()) 
+        {
+          mode = end;
+          return;
         }
         update_image();
       }
