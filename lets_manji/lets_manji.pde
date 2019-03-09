@@ -67,7 +67,7 @@ void setup()
 　　image_info_table.put(other_dir+"/hokkaido.jpeg", new ImageInfo("北海道の図", "北海道"));
 　　image_info_table.put(other_dir+"/itukushimazinzya.jpeg", new ImageInfo("厳島神社", "広島"));
 　　image_info_table.put(other_dir+"/kaminarimon.jpg", new ImageInfo("浅草寺", "東京"));
-　　image_info_table.put(other_dir+"/kaparu.jpg", new ImageInfo("カパル", "埼玉"));
+　　image_info_table.put(other_dir+"/kaparu.jpg", new ImageInfo("カパル（志木市のゆるキャラ）", "埼玉"));
 　　image_info_table.put(other_dir+"/nagoya-station.jpg", new ImageInfo("名古屋駅", "愛知"));
 　　image_info_table.put(other_dir+"/nagoyazyo.jpg", new ImageInfo("名古屋城", "愛知"));
 　　image_info_table.put(other_dir+"/ropongi.jpg", new ImageInfo("六本木ヒルズ", "東京"));
