@@ -16,15 +16,18 @@ GestureSocket gesture_socket;
 HashMap<String, Boolean> image_judge_table;
 List<String> image_names;
 
+PImage current_image;
+String correct_gesture;
+
+final String fukuoka_gesture = "swipe";
+final String other_gesture   = "screen_tap";
+
 void setup()
 {
   size(800, 800);
   background(255);
 
-  leap = new LeapMotion(this).allowGestures("swipe, key_tap");
-
-  game_timer = new Timer(30*1000);
-  unit_timer = new Timer( 5*1000);
+  leap = new LeapMotion(this).allowGestures(fukuoka_gesture + ", " + other_gesture);
 
   gesture_socket = new GestureSocket();
 
@@ -36,42 +39,26 @@ void setup()
   for (File fukuoka_image : fukuoka_dir.listFiles())
   {
     image_judge_table.put(fukuoka_image.toString(), true);
-    println("Fukuoka : " + fukuoka_image);
   }
   File other_dir = new File(data_dirname + "other_images");
   for (File other_image : other_dir.listFiles())
   {
     image_judge_table.put(other_image.toString(), false);
-    println("Other : " + other_image);
   }
 
   String[] string_list_raw = image_judge_table.keySet().toArray(new String[image_judge_table.size()]);
   image_names = new ArrayList<String>(Arrays.asList(string_list_raw));
+  update_image();
   
-  for (int i = 0; i < image_names.size(); ++i)
-  {
-    println("Filename : " + image_names.get(i));
-  }
-}
-
-String pop_next_image_name()
-{
-  int selected_index = (int)random(image_names.size());
-  String next_name = image_names.get(selected_index);
-  image_names.remove(selected_index);
-  return next_name;
+  unit_timer = new Timer(5*1000);
+  game_timer = new Timer(5*1000*image_names.size());
 }
 
 void draw()
 {
   background(255);
+  image(current_image,  width/2 - current_image.width/2, height/2);
 
-  if (image_names.size() > 0)
-  {
-    String image_name = pop_next_image_name();
-    boolean judge = image_judge_table.get(image_name);
-    println("From table : " + image_name + " : " + judge);
-  }
   game_timer.start();
   unit_timer.start();
 
@@ -80,19 +67,34 @@ void draw()
 
   draw_time_gage();
 
-  int duration = unit_timer.duration();
-  fill(0);
-  text("duration : " + duration, width/2, height/2);
+  if (image_names.size() == 0 || game_timer.should_reset())
+  {
+    exit_game();
+  }
   if (unit_timer.should_reset())
   {
-    fill(0);
-    println("reset !");
+    update_image();
   }
-
-
   if (gesture_socket.can_accessed())
   {
-    String gesture_name = gesture_socket.getGesture();
-    println(gesture_name + " detected.");
+    String detected_gesture = gesture_socket.getGesture();
+    if (correct_gesture == detected_gesture)
+    {
+      println("Result: Good !!!!!!!");
+    }
+    else
+    {
+      println("Result: Bad !!!!!!!");    
+    }
   }
+}
+
+void exit_game()
+{
+  background(0);
+  fill(0);
+  println("Finish..");
+  text("Thank you for playing !", width/2, height/2);
+  delay(3000);
+  exit();
 }
