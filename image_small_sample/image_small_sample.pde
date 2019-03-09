@@ -1,30 +1,43 @@
 PImage img;
 
-void setup(){
+void settings(){
   img = loadImage("hukuoka-tower.jpg");
-  size(728, 484);
-  imageMode(CENTER);
-  println(img.height);
-  println(img.width);
+  size(img.width, img.height);
 }
-int x = 728/2;
-int y = 484/2;
-float size_plm_x = 728.0;
-float size_plm_y = 484.0;
-boolean has_clicked = false;
+
+int x, y;
+float size_plm_x, size_plm_y;
+boolean has_clicked;
+
+void setup(){
+  imageMode(CENTER);
+  x = width/2;
+  y = height/2;
+  size_plm_x = width;
+  size_plm_y = height;
+  has_clicked = false;
+}
+
 void draw(){
   background(255);
   if(size_plm_x > 0 && size_plm_y > 0){
     image(img, x, y);
   }
   if(has_clicked){
-   if(y > -484/2){
+   if(y > -y){
      size_plm_x *= 0.9;
      size_plm_y *= 0.9;
      if(int(size_plm_x) > 0 && int(size_plm_y) > 0){
         img.resize(int(size_plm_x), int(size_plm_y));
      }
     y -= 10;
+   }
+   else{
+    has_clicked = false;
+    y = height/2;
+    size_plm_x = width;
+    size_plm_y = height;
+    img = loadImage("hukuoka-tower.jpg");
    }
   }
 }
