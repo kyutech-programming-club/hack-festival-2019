@@ -31,19 +31,19 @@ PVector get_right_hand_pos()
   return new PVector(0, 0);
 }
 
-String get_answer_with_hand()
-{
-  PVector right_hand_pos = get_right_hand_pos();
-  if (fukuoka_area.in_range(right_hand_pos))
-  {
-    return fukuoka_gesture;
-  }
-  else if (other_area.in_range(right_hand_pos))
-  {
-    return other_gesture;
-  }
-  else
-  {
-    return "";
-  }
-}
+//String get_answer_with_hand()
+//{
+//  PVector right_hand_pos = get_right_hand_pos();
+//  if (fukuoka_area.in_range(right_hand_pos))
+//  {
+//    return fukuoka_gesture;
+//  }
+//  else if (other_area.in_range(right_hand_pos))
+//  {
+//    return other_gesture;
+//  }
+//  else
+//  {
+//    return "";
+//  }
+//}

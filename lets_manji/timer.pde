@@ -5,7 +5,7 @@ class Timer
   
   Timer(int limit)
   {
-    start = now = 0;
+    start = now = millis();
     time_limit = limit;
   }
   

@@ -42,7 +42,7 @@ class ResultDisplay
   void activate(int m)
   {
     mode = m;
-    timer.start();
+    timer.reset();
     is_active = true;
     gesture_socket.lock();
   }
