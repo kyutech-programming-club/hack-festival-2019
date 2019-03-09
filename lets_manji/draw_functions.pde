@@ -15,3 +15,9 @@ void draw_background(){
   fill(0, 0, 255);
   rect(0, 0, width, height/5);
 }
+
+//image_position_test
+void draw_max_canvas(){
+  fill(255);
+  rect((width - image_canvas_scale)/2, height*3/10, image_canvas_scale, image_canvas_scale);
+}
