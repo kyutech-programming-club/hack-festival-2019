@@ -28,6 +28,7 @@ final String other_gesture   = "screen_tap";
 
 ResultDisplay result_display;
 //Area fukuoka_area, other_area;
+ImageTransformer image_tf;
 
 ScoreBoard score_board;
 
@@ -127,7 +128,11 @@ void setup()
   image_info_table.put(fukuoka_dir+"/yusentei.jpg", new ImageInfo("友泉亭公園", "福岡"));
   image_info_table.put(fukuoka_dir+"/kuruppa.jpg", new ImageInfo("くるっぱ（久留米市のゆるキャラ）", "福岡"));  
 
-
+  image_tf  =  new ImageTransformer(new PVector(image_x, image_y), 
+        new PVector(current_image.width, current_image.height), 
+        new PVector(0, 0), 
+        new PVector(current_image.width, current_image.height), 
+        3000);
 
   unit_timer = new Timer(5*1000);
   //game_timer = new Timer(5*1000*image_names.size());
@@ -162,12 +167,8 @@ void draw()
       }
     
       image(current_image, image_x, image_y);
-      //ImageTransformer image_tf  =  new ImageTransformer(new PVector(image_x, image_y), 
-      //  new PVector(current_image.width, current_image.height), 
-      //  new PVector(0, 0), 
-      //  new PVector(current_image.width, current_image.height), 
-      //  3000);
-      //image_tf.transform();
+
+      image_tf.transform();
     
       unit_timer.start();
     

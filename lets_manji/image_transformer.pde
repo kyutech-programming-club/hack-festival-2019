@@ -20,8 +20,11 @@ class ImageTransformer
     timer.start();
     timer.update();
     
-    float rate = timer.duration() / timer.time_limit;
-    rate = rate > 1.0 ? 0 : rate;
+    if (timer.should_reset()){
+      return;
+    }
+
+    float rate = (float)timer.duration() / (float)timer.time_limit;
     PVector pos_diff = next_pos.sub(prev_pos);
     PVector current_pos = prev_pos.add(pos_diff.mult(rate));
     image_x = (int)current_pos.x;
@@ -31,6 +34,8 @@ class ImageTransformer
 
     PVector size_diff = next_size.sub(prev_size);
     PVector current_size = prev_size.add(size_diff.mult(rate));
-    current_image.resize((int)current_size.x, (int)current_size.y);
+    if((int)current_size.x > 0 && (int)current_size.y > 0){
+      current_image.resize((int)current_size.x, (int)current_size.y);
+    }
   }
 }
