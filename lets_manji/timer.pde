@@ -13,6 +13,7 @@ class Timer
   {
     if (should_reset())
     {
+      println("RESET!!!");
       start = millis();
     }
   }
@@ -30,5 +31,10 @@ class Timer
   boolean should_reset()
   {
     return duration() > time_limit;
+  }
+  
+  void reset()
+  {
+    start = millis();
   }
 }

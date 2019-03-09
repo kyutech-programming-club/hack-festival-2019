@@ -26,12 +26,15 @@ String correct_gesture;
 final String fukuoka_gesture = "swipe";
 final String other_gesture   = "screen_tap";
 
+ResultDisplay result_display;
 Area fukuoka_area, other_area;
+
+ScoreBoard score_board;
 
 void setup()
 {
-  size(800, 800);
-  background(255);
+  size(1600, 1000);
+  draw_background();
 
   leap = new LeapMotion(this).allowGestures(fukuoka_gesture + ", " + other_gesture);
 
@@ -121,19 +124,36 @@ void setup()
 
 
 
-  
-
   unit_timer = new Timer(5*1000);
   game_timer = new Timer(5*1000*image_names.size());
-  
-  fukuoka_area = new Area(width/4,   height/4, 100, 100);
+
+  result_display = new ResultDisplay(3000);
+
+  fukuoka_area = new Area(width/4, height/4, 100, 100);
   other_area   = new Area(width*3/4, height/4, 100, 100);
+  
+  score_board = new ScoreBoard();
 }
 
 void draw()
 {
-  background(255);
+
+  draw_background();
+  //draw_max_canvas();
+
+  if (result_display.is_active())
+  {
+    result_display.display();
+    return;
+  }
+
   image(current_image, image_x, image_y);
+  ImageTransformer image_tf  =  new ImageTransformer(new PVector(image_x, image_y), 
+    new PVector(current_image.width, current_image.height), 
+    new PVector(0, 0), 
+    new PVector(current_image.width, current_image.height), 
+    3000);
+  image_tf.transform();
 
   game_timer.start();
   unit_timer.start();
@@ -142,34 +162,54 @@ void draw()
   unit_timer.update();
 
   draw_time_gage();
-  fukuoka_area.draw(color(255, 0, 0));
-  other_area.draw(color(0, 0, 255));
-  
+  //fukuoka_area.draw(color(255, 0, 0));
+  //other_area.draw(color(0, 0, 255));
+  score_board.draw();
+
   for (Hand hand : leap.getHands())
   {
     hand.draw();
   }
-  
+
   PVector right_hand_pos = get_right_hand_pos();
   fill(0, 200, 0);
   ellipse(right_hand_pos.x, right_hand_pos.y, 25, 25);
-  
-  if (image_names.size() == 0 || game_timer.should_reset())
+
+  if (image_names.size() == 0 || game_timer.should_reset()) 
   {
     exit_game();
   }
-  if (unit_timer.should_reset())
+  if (unit_timer.should_reset())  // Unit is timed-up
   {
-    String answer = get_answer_with_hand();
-    if (answer == correct_gesture)
+    result_display.activate(result_display.timeup);
+    score_board.toggle(ScoreBoard.reduce);
+    update_image();
+  }
+  if (gesture_socket.can_accessed())
+  {
+    String gesture = gesture_socket.getGesture();
+    println(gesture + " detected.");
+    if (gesture == correct_gesture)
     {
-      println("GOOD");
-    }
-    else
+      println("正解！！");
+      background(0, 0, 0, 200);
+      text("正解！！", width/2, height/2);
+      result_display.activate(result_display.correct);
+      score_board.toggle(ScoreBoard.add);
+    } else
     {
-      println("BAD");
+      println("あひーーーー");
+      background(0, 0, 0, 200);
+      text("あひ！！", width/2, height/2);
+      result_display.activate(result_display.incorrect);
+      score_board.toggle(ScoreBoard.reduce);
     }
     update_image();
+  }
+
+  if (result_display.is_active())
+  {
+    result_display.display();
   }
 }
 
@@ -179,6 +219,6 @@ void exit_game()
   fill(0);
   println("Finish..");
   text("Thank you for playing !", width/2, height/2);
-  delay(3000);
+  delay(10000);
   exit();
 }
