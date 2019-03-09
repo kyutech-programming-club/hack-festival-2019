@@ -32,4 +32,9 @@ class Timer
   {
     return duration() > time_limit;
   }
+  
+  void reset()
+  {
+    start = millis();
+  }
 }
