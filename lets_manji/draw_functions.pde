@@ -16,6 +16,13 @@ void draw_background(){
   rect(0, 0, width, height/5);
 }
 
+void draw_game_time()
+{
+  fill(0);
+  text("Game Time : " + (game_timer.time_limit - game_timer.duration())/1000,
+       10, 600);
+}
+
 //image_position_test
 void draw_max_canvas(){
   fill(255);
@@ -27,8 +34,9 @@ class ResultDisplay
   final int correct     = 0;
   final int incorrect   = 1;
   final int timeup      = 2;
-  final int good_finish = 3;
-  final int bad_finish  = 4;
+  final int finish      = 3;
+  final int good_finish = 4;
+  final int bad_finish  = 5;
   
   int mode;
   Timer timer;
@@ -61,6 +69,9 @@ class ResultDisplay
         break;
       case timeup:
         display_timeup();
+        break;
+      case finish:
+        display_finish();
         break;
       case good_finish:
         display_good_finish();
@@ -104,7 +115,15 @@ class ResultDisplay
     text("Thank you for playing", width/2, height/2);
     score_board.draw();
   }
-
+  
+  void display_finish()
+  {
+    background(0, 255, 255, 200);
+    textSize(48);
+    text("Game Over", width/2, height/2);
+    score_board.draw();
+  }
+  
   void display_bad_finish()
   {
     background(255, 255, 0, 200);

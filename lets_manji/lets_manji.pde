@@ -32,9 +32,11 @@ ImageTransformer appear_image_tf;
 
 ScoreBoard score_board;
 
-final int intro = 0;
-final int main  = 1;
-final int end   = 2;
+final int intro  = 0;
+final int main   = 1;
+final int end    = 2;
+final int result = 3;
+
 int mode;
 String next_image_name;
 
@@ -51,7 +53,7 @@ void setup()
   // Load image-names and judges
   image_judge_table = new HashMap<String, Boolean>();
 
-  String data_dirname = "/home/wata//works/my_works/kyutech_programming_club/hack-festival-2018/lets_manji/data/";
+  String data_dirname = "/home/tanacchi/works/hack-festival-2018/lets_manji/data/";
   File fukuoka_dir = new File(data_dirname + "fukuoka_images");
   for (File fukuoka_image : fukuoka_dir.listFiles())
   {
@@ -155,8 +157,6 @@ void draw()
   switch (mode)
   {
     case intro:
-      game_timer.start();
-      mode = main;
       break;
     case main:
       draw_background();
@@ -170,7 +170,7 @@ void draw()
       
       appear_image();
 
-      
+      //image_tf.transform();
     
       unit_timer.start();
     
@@ -178,6 +178,7 @@ void draw()
       unit_timer.update();
     
       draw_time_gage();
+      draw_game_time();
       // fukuoka_area.draw(color(255, 0, 0));
       // other_area.draw(color(0, 0, 255));
       score_board.draw();
@@ -195,12 +196,10 @@ void draw()
       {
         score_board.toggle(ScoreBoard.reduce);
         result_display.activate(result_display.timeup);
-        if (image_names.size() == 0 || game_timer.should_reset()) 
+        if (image_names.size() > 0 ) 
         {
-          mode = end;
-          return;
+          update_image();
         }
-        update_image();
       }
       if (gesture_socket.can_accessed())
       {
@@ -221,22 +220,41 @@ void draw()
           result_display.activate(result_display.incorrect);
           score_board.toggle(ScoreBoard.reduce);
         }
-        if (image_names.size() == 0 || game_timer.should_reset()) 
+        if (image_names.size() > 0) 
         {
+          update_image();
+        }
+      }
+      if (image_names.size() == 0 || game_timer.should_reset()) 
+      {
           mode = end;
           return;
-        }
-        update_image();
       }
     
       break;
     case end:
-      result_display.activate(score_board.get() > 150 ? result_display.good_finish : result_display.bad_finish);
+      result_display.activate(result_display.finish);
+      break;
+    case result:
+      result_display.activate(score_board.get() > 150 ? result_display.good_finish : result_display.bad_finish);    
       break;
   }
   if (result_display.is_active())
   {
     result_display.display();
+  }
+}
+
+void keyReleased()
+{
+  if (mode == intro)
+  {
+    mode = main;
+    game_timer.start();
+  }
+  else if (mode == end)
+  {
+    mode = result;
   }
 }
 
