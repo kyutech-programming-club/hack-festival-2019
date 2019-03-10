@@ -136,8 +136,8 @@ class ResultDisplay
   {
     background(0, 255, 255, 200);
     textSize(120);
-    text("終了！！！", width/4, 200);
-    score_board.draw();
+    fill(240, 30, 60);
+    text("終了！！！ \n " + "得点 : " +  score_board.get(), width/3,height*7/13 );
   }
 
   void display_bad_finish()
