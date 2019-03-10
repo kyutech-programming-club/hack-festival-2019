@@ -157,6 +157,8 @@ void draw()
   switch (mode)
   {
     case intro:
+      game_timer.reset();
+      unit_timer.reset();
       break;
     case main:
       draw_background();
@@ -250,7 +252,6 @@ void keyReleased()
   if (mode == intro)
   {
     mode = main;
-    game_timer.start();
   }
   else if (mode == end)
   {
