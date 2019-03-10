@@ -79,3 +79,10 @@ void show_answer()
   text(image_info.name, 100, 0);
   text(image_info.location, 100, 0);
 }
+
+void swipe_image(){
+   swipe_image_tf.transform();
+   imageMode(CENTER);
+   image(current_image, image_x, image_y);
+   imageMode(CORNER);
+}

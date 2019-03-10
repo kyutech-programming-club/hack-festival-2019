@@ -31,6 +31,7 @@ final String other_gesture   = "screen_tap";
 ResultDisplay result_display;
 //Area fukuoka_area, other_area;
 ImageTransformer appear_image_tf;
+ImageTransformer swipe_image_tf;
 
 ScoreBoard score_board;
 
@@ -133,11 +134,18 @@ void setup()
   image_info_table.put(fukuoka_dir+"/yusentei.jpg", new ImageInfo("友泉亭公園", "福岡"));
   image_info_table.put(fukuoka_dir+"/kuruppa.jpg", new ImageInfo("くるっぱ（久留米市のゆるキャラ）", "福岡"));  
 
-  appear_image_tf  =  new ImageTransformer(new PVector(width/2 , height/5),
-                                    new PVector(10, 10),
-                                    new PVector(width/2, height*3/5),
-                                    new PVector(current_image.width, current_image.height),
-                                    5000);
+  appear_image_tf  =  new ImageTransformer(new PVector(width/2 , height + current_image.height/2),
+                                           new PVector(current_image.width, current_image.height),
+                                           new PVector(width/2, height*3/5),
+                                           new PVector(current_image.width, current_image.height),
+                                           5000);
+                                           
+  swipe_image_tf   =  new ImageTransformer(new PVector(width/2, height*3/5),
+                                           new PVector(current_image.width, current_image.height),
+                                           new PVector(-current_image.width/2, height*3/5),
+                                           new PVector(current_image.width, current_image.height),
+                                           500);
+                                    
 
   unit_timer = new Timer(5*1000);
   //game_timer = new Timer(5*1000*image_names.size());
@@ -160,6 +168,7 @@ void draw()
     case intro:
       game_timer.reset();
       unit_timer.reset();
+      appear_image_tf.timer.reset();
       break;
     case main:
       draw_background();
