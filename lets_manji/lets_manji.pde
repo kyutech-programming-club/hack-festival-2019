@@ -100,7 +100,7 @@ void setup()
   image_info_table.put(other_dir+"/tokyo-station.jpg", new ImageInfo("東京駅", "東京"));
   image_info_table.put(other_dir+"/tokyo-tower.jpg", new ImageInfo("東京タワー", "東京"));
 
-
+  image_info_table.put(fukuoka_dir+"/school_furyou_tsuppari.png", new ImageInfo("卍", "福岡"));
   image_info_table.put(fukuoka_dir+"/akarenga-bunkaten.jpg", new ImageInfo("赤煉瓦文化館", "福岡"));
   image_info_table.put(fukuoka_dir+"/dazaihu.jpg", new ImageInfo("太宰府天満宮", "福岡"));
   image_info_table.put(fukuoka_dir+"/dazaihu-sutaba-nonfree.jpg", new ImageInfo("太宰府のスタバ", "福岡"));
