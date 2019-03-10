@@ -262,4 +262,8 @@ void keyReleased()
   {
     mode = result;
   }
+  else if (mode == result)
+  {
+    mode = intro;
+  }
 }
