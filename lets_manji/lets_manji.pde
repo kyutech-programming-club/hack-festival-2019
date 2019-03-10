@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.util.Arrays;
 import processing.opengl.*;
+import ddf.minim.*;
 
 LeapMotion leap;
 
@@ -41,6 +42,9 @@ final int intro  = 0;
 final int main   = 1;
 final int end    = 2;
 final int result = 3;
+
+Minim minim;
+AudioPlayer correct_player, miss_player, bad_player, happy_player, swipe_player, screentap_player;
 
 int mode;
 
@@ -161,6 +165,14 @@ void setup()
   //other_area   = new Area(width*3/4, height/4, 100, 100);
   
   score_board = new ScoreBoard();
+
+  minim = new Minim(this);
+  correct_player = minim.loadFile("correct.mp3");
+  miss_player = minim.loadFile("miss.mp3");
+  bad_player = minim.loadFile("bag.mp3");
+  happy_player = minim.loadFile("happy.mp3");
+  swipe_player = minim.loadFile("swipe.mp3");
+  screentap_player = minim.loadFile("screentap.mp3");
   
   mode = intro;
 }
@@ -208,6 +220,8 @@ void draw()
       {
         score_board.toggle(ScoreBoard.reduce);
         result_display.activate(result_display.timeup);
+        miss_player.play();
+        miss_player.play();
         //appear_image_tf.reset();
         if (image_names.size() > 0 ) 
         {
@@ -224,6 +238,8 @@ void draw()
           background(0, 0, 0, 200);
           text("正解！！", width/2, height/2);
           result_display.activate(result_display.correct);
+          correct_player.play();
+          correct_player.rewind();
           score_board.toggle(ScoreBoard.add);
         } else
         {
@@ -231,6 +247,8 @@ void draw()
           background(0, 0, 0, 200);
           text("あひ！！", width/2, height/2);
           result_display.activate(result_display.incorrect);
+          miss_player.play();
+          miss_player.rewind();
           score_board.toggle(ScoreBoard.reduce);
         }
         if (image_names.size() > 0) 
@@ -250,7 +268,14 @@ void draw()
       result_display.activate(result_display.finish);
       break;
     case result:
-      result_display.activate(score_board.get() > 150 ? result_display.good_finish : result_display.bad_finish);    
+      if (score_board.get() > 500)
+      {
+        result_display.activate(result_display.good_finish);    
+      }
+      else
+      {
+        result_display.activate(result_display.bad_finish);    
+      }
       break;
   }
   if (result_display.is_active())
@@ -274,4 +299,16 @@ void keyReleased()
   {
     mode = intro;
   }
+}
+
+void stop()
+{
+  correct_player.close();
+  miss_player.close();
+  bad_player.close();
+  happy_player.close();
+  swipe_player.close();
+  screentap_player.close();
+  minim.stop();
+  super.stop();
 }
