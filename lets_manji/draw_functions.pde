@@ -106,6 +106,7 @@ class ResultDisplay
     background(0, 0, 0, 200);
     textSize(48);
     text("Timeup", width/2, height/2);
+    show_answer();
   }
 
   void display_good_finish()

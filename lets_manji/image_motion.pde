@@ -28,13 +28,14 @@ String pop_next_image_name()
 
 void update_image()
 {
-  next_image_name = pop_next_image_name();
-  current_image = loadImage(next_image_name);
+  prev_image_name = current_image_name;
+  current_image_name = pop_next_image_name();
+  current_image = loadImage(current_image_name);
   fit_image();
   PVector image_pos = gen_default_image_pos();
   image_x = (int)image_pos.x;
   image_y = (int)image_pos.y;
-  boolean is_fukuoka = image_judge_table.get(next_image_name);
+  boolean is_fukuoka = image_judge_table.get(current_image_name);
   correct_gesture = is_fukuoka ? fukuoka_gesture : other_gesture;
 }
 
@@ -49,4 +50,32 @@ void appear_image(){
    imageMode(CENTER);
    image(current_image, image_x, image_y);
    imageMode(CORNER);
+}
+
+void show_answer()
+{
+  PImage prev_image = loadImage(prev_image_name);
+  float ratio;
+  int image_width = 0, image_height = 0;
+  if (prev_image.width >= prev_image.height)
+  {
+    ratio = (float)image_canvas_scale / (float)prev_image.width;
+    image_width = image_canvas_scale;
+    image_height = int(prev_image.height * ratio);
+  } else if (prev_image.width < prev_image.height)
+  {
+    ratio = (float)image_canvas_scale / (float)prev_image.height;
+    image_height = image_canvas_scale;
+    image_width = int(prev_image.width * ratio);
+  }
+  prev_image.resize(image_width, image_height);
+  image(prev_image, image_x, image_y);
+  
+  ImageInfo image_info = image_info_table.get(prev_image_name);
+  println(image_info.name);
+  println(image_info.location);
+  
+  fill(255);
+  text(image_info.name, 100, 0);
+  text(image_info.location, 100, 0);
 }

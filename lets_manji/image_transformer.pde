@@ -41,7 +41,7 @@ class ImageTransformer
   
     PVector size_diff = sub_next_size.sub(prev_size);
     PVector current_size = sub_prev_size.add(size_diff.mult(rate));
-     current_image = loadImage(next_image_name); 
+     current_image = loadImage(current_image_name); 
     if((int)current_size.x > 0 && (int)current_size.y > 0){
       current_image.resize((int)current_size.x, (int)current_size.y);
     }

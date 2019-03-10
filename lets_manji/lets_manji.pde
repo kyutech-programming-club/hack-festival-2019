@@ -18,6 +18,8 @@ List<String> image_names;
 
 HashMap<String, ImageInfo> image_info_table;
 
+String current_image_name;
+String prev_image_name;
 PImage current_image;
 int image_x, image_y;
 
@@ -38,7 +40,6 @@ final int end    = 2;
 final int result = 3;
 
 int mode;
-String next_image_name;
 
 void setup()
 {
