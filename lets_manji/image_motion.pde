@@ -73,12 +73,9 @@ void show_answer()
   image(prev_image, image_x, image_y);
   
   ImageInfo image_info = image_info_table.get(prev_image_name);
-  println(image_info.name);
-  println(image_info.location);
   
   fill(255);
-  text(image_info.name, width/2, height/2);
-  text(image_info.location, 100, 0);
+  text(image_info.name + "(" + image_info.location + ")", width/2-prev_image.width/2, height/2-prev_image.height/2);
 }
 
 void swipe_image(){
