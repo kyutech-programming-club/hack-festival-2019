@@ -259,12 +259,3 @@ void keyReleased()
     mode = result;
   }
 }
-
-void exit_game()
-{
-  background(0);
-  fill(0);
-  println("Finish..");
-  text("Thank you for playing !", width/2, height/2);
-  exit();
-}
