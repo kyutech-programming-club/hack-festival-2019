@@ -1,3 +1,14 @@
+void draw_start_menu()
+{
+  PFont font = createFont("MS PGothic",150,true);
+  textFont(font);
+  textSize(150);
+  fill(255, 0, 0);
+  text("Let's 卍", width/3, height/4);
+  PImage sart_menu = loadImage("start_menu.jpg");
+  image(loadImage("start_menu.jpg"), width/2, height/2);
+}
+
 void draw_time_gage()
 {  
   fill(200);

@@ -22,6 +22,7 @@ HashMap<String, ImageInfo> image_info_table;
 String current_image_name;
 String prev_image_name;
 PImage current_image;
+PImage start_image;
 int image_x, image_y;
 
 String correct_gesture;
@@ -57,7 +58,8 @@ void setup()
   // Load image-names and judges
   image_judge_table = new HashMap<String, Boolean>();
 
-  String data_dirname = "/home/wata/works/my_works/kyutech_programming_club/hack-festival-2018/lets_manji/data/";
+  String data_dirname = "/home/ryuto/hack-festival-2018/lets_manji/data/";
+
   File fukuoka_dir = new File(data_dirname + "fukuoka_images");
   for (File fukuoka_image : fukuoka_dir.listFiles())
   {
@@ -169,6 +171,7 @@ void draw()
   {
     case intro:
       draw_background();
+      draw_start_menu();
       game_timer.reset();
       unit_timer.reset();
 
