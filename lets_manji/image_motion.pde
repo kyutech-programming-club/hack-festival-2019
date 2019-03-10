@@ -26,6 +26,7 @@ String pop_next_image_name()
 }
 
 
+
 void update_image()
 {
   prev_image_name = current_image_name;
@@ -76,7 +77,7 @@ void show_answer()
   println(image_info.location);
   
   fill(255);
-  text(image_info.name, 100, 0);
+  text(image_info.name, width/2, height/2);
   text(image_info.location, 100, 0);
 }
 

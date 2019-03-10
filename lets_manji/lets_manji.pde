@@ -49,7 +49,9 @@ void setup()
   draw_background();
 
   leap = new LeapMotion(this).allowGestures(fukuoka_gesture + ", " + other_gesture);
-
+  leap.setGestureScreenTapMinDistance(30);
+  leap.setGestureSwipeMinLength(50);
+  
   gesture_socket = new GestureSocket();
 
   // Load image-names and judges
@@ -259,7 +261,7 @@ void keyReleased()
   if (mode == intro)
   {
     mode = main;
-    delay(1000);
+    delay(500);
   }
   else if (mode == end)
   {
