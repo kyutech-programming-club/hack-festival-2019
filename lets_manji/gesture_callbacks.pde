@@ -2,8 +2,8 @@ void leapOnSwipeGesture(SwipeGesture gesture, int state)
 {
   if (state == 3)
   {
-    swipe_image_tf.timer.reset();
-    swipe_image();
+    //swipe_image_tf.timer.reset();
+    //swipe_image();
     gesture_socket.setGesture(fukuoka_gesture);
   }
 }

@@ -7,7 +7,7 @@ void draw_time_gage()
   rect(width/4, height/20, (width/2)*(1 - rate), height/20);
 }
 
-void draw_background(){
+void draw_background() {
   fill(0, 255, 0);
   rect(0, height/5, width, height);
   fill(115, 66, 41);
@@ -19,12 +19,12 @@ void draw_background(){
 void draw_game_time()
 {
   fill(0);
-  text("Game Time : " + (game_timer.time_limit - game_timer.duration())/1000,
-       10, 600);
+  text("Game Time : " + (game_timer.time_limit - game_timer.duration())/1000, 
+    10, 600);
 }
 
 //image_position_test
-void draw_max_canvas(){
+void draw_max_canvas() {
   fill(255);
   rect((width - image_canvas_scale)/2, height*3/10, image_canvas_scale, image_canvas_scale);
 }
@@ -37,17 +37,17 @@ class ResultDisplay
   final int finish      = 3;
   final int good_finish = 4;
   final int bad_finish  = 5;
-  
+
   int mode;
   Timer timer;
   boolean is_active;
-  
+
   ResultDisplay(int limit)
   {
     timer = new Timer(limit);
     is_active = false;
   }
-  
+
   void activate(int m)
   {
     mode = m;
@@ -55,29 +55,29 @@ class ResultDisplay
     is_active = true;
     gesture_socket.lock();
   }
-  
+
   void display()
   {
     timer.update();
     switch (mode)
     {
-      case correct:
-        display_correct();
-        break;
-      case incorrect:
-        display_incorrect();
-        break;
-      case timeup:
-        display_timeup();
-        break;
-      case finish:
-        display_finish();
-        break;
-      case good_finish:
-        display_good_finish();
-        break;
-      case bad_finish:
-        display_bad_finish();
+    case correct:
+      display_correct();
+      break;
+    case incorrect:
+      display_incorrect();
+      break;
+    case timeup:
+      display_timeup();
+      break;
+    case finish:
+      display_finish();
+      break;
+    case good_finish:
+      display_good_finish();
+      break;
+    case bad_finish:
+      display_bad_finish();
     }
     if (timer.should_reset())
     {
@@ -86,10 +86,10 @@ class ResultDisplay
       gesture_socket.release();
     }
   }
- 
+
   void display_correct()
   {
-    background(0 , 0, 0, 250);
+    background(0, 0, 0, 250);
     textSize(48);
     text("Correct", width/2, height/2);
   }
@@ -100,7 +100,7 @@ class ResultDisplay
     textSize(48);
     text("Incorrect", width/2, height/2);
   }
-  
+
   void display_timeup()
   {
     background(0, 0, 0, 200);
@@ -116,7 +116,7 @@ class ResultDisplay
     text("You are good player", width/2, height/2);
     score_board.draw();
   }
-  
+
   void display_finish()
   {
     background(0, 255, 255, 200);
@@ -124,7 +124,7 @@ class ResultDisplay
     text("Game Over", width/2, height/2);
     score_board.draw();
   }
-  
+
   void display_bad_finish()
   {
     background(255, 255, 0, 200);
@@ -147,7 +147,7 @@ void draw_hand()
     {
       textSize(80);
       finger.drawBones();
-      finger.drawJoints();        
+      finger.drawJoints();
     }
   }
   PVector right_hand_pos = get_right_hand_pos();

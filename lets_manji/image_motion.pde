@@ -46,7 +46,7 @@ PVector gen_default_image_pos()
 }
 
 void appear_image(){
-   appear_image_tf.transform();
+   //appear_image_tf.transform();
    imageMode(CENTER);
    image(current_image, image_x, image_y);
    imageMode(CORNER);
@@ -81,7 +81,7 @@ void show_answer()
 }
 
 void swipe_image(){
-   swipe_image_tf.transform();
+   //swipe_image_tf.transform();
    imageMode(CENTER);
    image(current_image, image_x, image_y);
    imageMode(CORNER);
