@@ -5,8 +5,10 @@ void draw_start_menu()
   textSize(150);
   fill(255, 0, 0);
   text("Let's 卍", width/3, height/4);
-  PImage sart_menu = loadImage("start_menu.jpg");
-  image(loadImage("start_menu.jpg"), width/2, height/2);
+  textSize(50);
+  imageMode(CENTER);
+  image(loadImage("start_menu.jpg"), width/2, height*3/5);
+  imageMode(CORNER);
 }
 
 void draw_time_gage()
