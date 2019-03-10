@@ -63,9 +63,6 @@ void setup()
   image_judge_table = new HashMap<String, Boolean>();
 
   File fukuoka_dir = new File(dataPath("fukuoka_images"));
-
-  File fukuoka_dir = new File(data_dirname + "fukuoka_images");
-
   for (File fukuoka_image : fukuoka_dir.listFiles())
   {
     image_judge_table.put(fukuoka_image.toString(), true);
