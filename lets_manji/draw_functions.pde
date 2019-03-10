@@ -3,11 +3,12 @@ void draw_start_menu()
   PFont font = createFont("MS PGothic",150,true);
   textFont(font);
   textSize(150);
-  fill(255, 0, 0);
+  fill(255, 250, 100);
   text("Let's 卍", width/3, height/4);
   textSize(50);
   imageMode(CENTER);
   image(loadImage("start_menu.jpg"), width/2, height*3/5);
+  image(loadImage("school_furyou_tsuppari.png"), width*6/7, height/4);
   imageMode(CORNER);
 }
 
@@ -129,8 +130,7 @@ class ResultDisplay
     background(0, 255, 255, 200);
     textSize(68);
     image(loadImage("happy.png"), 0, 0, width, height + height/5);
-    score_board.draw();
-  }
+   }
 
   void display_finish()
   {
@@ -143,9 +143,7 @@ class ResultDisplay
   void display_bad_finish()
   {
     background(255, 255, 0, 200);
-    textSize(68);
     image(loadImage("bad.png"), 0, 0, width, height + height/5);
-    score_board.draw();
   }
 
   boolean is_active()

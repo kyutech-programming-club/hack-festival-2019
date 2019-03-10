@@ -62,7 +62,7 @@ void setup()
   // Load image-names and judges
   image_judge_table = new HashMap<String, Boolean>();
 
-  String data_dirname = "/home/tanacchi/works/hack-festival-2018/lets_manji/data/";
+  String data_dirname = "/home/wata/works/my_works/kyutech_programming_club/hack-festival-2018/lets_manji/data/";
 
   File fukuoka_dir = new File(data_dirname + "fukuoka_images");
   for (File fukuoka_image : fukuoka_dir.listFiles())
