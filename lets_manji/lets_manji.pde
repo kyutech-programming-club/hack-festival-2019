@@ -169,7 +169,7 @@ void setup()
   minim = new Minim(this);
   correct_player = minim.loadFile("correct.mp3");
   miss_player = minim.loadFile("miss.mp3");
-  bad_player = minim.loadFile("bag.mp3");
+  bad_player = minim.loadFile("bad.mp3");
   happy_player = minim.loadFile("happy.mp3");
   swipe_player = minim.loadFile("swipe.mp3");
   screentap_player = minim.loadFile("screentap.mp3");
@@ -234,7 +234,6 @@ void draw()
         println(gesture + " detected.");
         if (gesture == correct_gesture)
         {
-          println("正解！！");
           background(0, 0, 0, 200);
           text("正解！！", width/2, height/2);
           result_display.activate(result_display.correct);
@@ -243,7 +242,6 @@ void draw()
           score_board.toggle(ScoreBoard.add);
         } else
         {
-          println("あひーーーー");
           background(0, 0, 0, 200);
           text("あひ！！", width/2, height/2);
           result_display.activate(result_display.incorrect);

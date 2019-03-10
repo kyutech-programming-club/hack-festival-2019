@@ -103,32 +103,31 @@ class ResultDisplay
   void display_correct()
   {
     background(0, 0, 0, 250);
-    textSize(48);
-    text("Correct", width/2, height/2);
+    textSize(68);
+    text("正解！！", width/2-100, height/2);
     show_answer();
   }
 
   void display_incorrect()
   {
     background(0, 0, 0, 200);
-    textSize(48);
-    text("Incorrect", width/2, height/2);
+    textSize(68);
+    text("ちがうよ！！", width/2, height/2);
     show_answer();
   }
 
   void display_timeup()
   {
     background(0, 0, 0, 200);
-    textSize(48);
-    text("Timeup", width/2, height/2);
+    textSize(68);
+    text("時間切れ！！", width/2, height/2);
     show_answer();
   }
 
   void display_good_finish()
   {
     background(0, 255, 255, 200);
-    textSize(48);
-    text("You are good player", width/2, height/2);
+    textSize(68);
     image(loadImage("happy.png"), 0, 0, width, height + height/5);
     score_board.draw();
   }
@@ -136,16 +135,15 @@ class ResultDisplay
   void display_finish()
   {
     background(0, 255, 255, 200);
-    textSize(48);
-    text("Game Over", width/2, height/2);
+    textSize(68);
+    text("終了！！！", width/2, height/2);
     score_board.draw();
   }
 
   void display_bad_finish()
   {
     background(255, 255, 0, 200);
-    textSize(48);
-    text("You are poor player", width/2, height/2);
+    textSize(68);
     image(loadImage("bad.png"), 0, 0, width, height + height/5);
     score_board.draw();
   }
