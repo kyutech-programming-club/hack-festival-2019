@@ -129,7 +129,7 @@ class ResultDisplay
     background(0, 255, 255, 200);
     textSize(48);
     text("You are good player", width/2, height/2);
-    image(loadImage("happy.png"), 0, 0, width, height);
+    image(loadImage("happy.png"), 0, 0, width, height + height/5);
     score_board.draw();
   }
 
@@ -146,7 +146,7 @@ class ResultDisplay
     background(255, 255, 0, 200);
     textSize(48);
     text("You are poor player", width/2, height/2);
-    image(loadImage("bad.png"), 0, 0, width, height);
+    image(loadImage("bad.png"), 0, 0, width, height + height/5);
     score_board.draw();
   }
 
