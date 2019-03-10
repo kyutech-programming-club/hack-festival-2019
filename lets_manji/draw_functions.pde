@@ -32,8 +32,8 @@ void draw_background() {
 void draw_game_time()
 {
   fill(0);
-  text("Game Time : " + (game_timer.time_limit - game_timer.duration())/1000, 
-    10, 600);
+  textSize(48);
+  text("残り時間 : " + (game_timer.time_limit - game_timer.duration())/1000 + " [s]", width-375, 180);
 }
 
 //image_position_test
@@ -103,24 +103,24 @@ class ResultDisplay
   void display_correct()
   {
     background(0, 0, 0, 250);
-    textSize(68);
-    text("正解！！", width/2-100, height/2);
+    textSize(120);
+    text("正解！！", width/4, 200);
     show_answer();
   }
 
   void display_incorrect()
   {
     background(0, 0, 0, 200);
-    textSize(68);
-    text("ちがうよ！！", width/2, height/2);
+    textSize(120);
+    text("ちがうよ！！", width/4, 200);
     show_answer();
   }
 
   void display_timeup()
   {
     background(0, 0, 0, 200);
-    textSize(68);
-    text("時間切れ！！", width/2, height/2);
+    textSize(120);
+    text("時間切れ！！", width/4, 200);
     show_answer();
   }
 
@@ -135,8 +135,8 @@ class ResultDisplay
   void display_finish()
   {
     background(0, 255, 255, 200);
-    textSize(68);
-    text("終了！！！", width/2, height/2);
+    textSize(120);
+    text("終了！！！", width/4, 200);
     score_board.draw();
   }
 

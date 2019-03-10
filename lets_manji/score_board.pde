@@ -16,7 +16,7 @@ class ScoreBoard
   
   void draw()
   {
-    text("Score" + score, 100, 100);
+    text("得点：" + score, 100, 100);
   }
   
   int get()

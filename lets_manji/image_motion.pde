@@ -70,14 +70,15 @@ void show_answer()
     image_width = int(prev_image.width * ratio);
   }
   prev_image.resize(image_width, image_height);
-  image(prev_image, image_x, image_y);
+  image(prev_image, image_x, image_y-prev_image.height/2);
 
   if (image_info_table.containsKey(prev_image_name))
   {
     ImageInfo image_info = image_info_table.get(prev_image_name);
-    
+
     fill(255);
-    text(image_info.name + "(" + image_info.location + ")", width/2-prev_image.width/2, height/2-prev_image.height/2);
+    textSize(48);
+    text(image_info.name + "(" + image_info.location + ")", 100, height/2);
   }
 }
 
