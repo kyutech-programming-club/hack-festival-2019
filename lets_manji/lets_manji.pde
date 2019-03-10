@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Arrays;
+import processing.opengl.*;
 
 LeapMotion leap;
 
@@ -30,7 +31,7 @@ final String other_gesture   = "screen_tap";
 
 ResultDisplay result_display;
 //Area fukuoka_area, other_area;
-//ImageTransformer appear_image_tf;
+ImageTransformer appear_image_tf;
 //ImageTransformer swipe_image_tf;
 
 ScoreBoard score_board;
@@ -133,11 +134,11 @@ void setup()
   image_info_table.put(fukuoka_dir+"/yusentei.jpg", new ImageInfo("友泉亭公園", "福岡"));
   image_info_table.put(fukuoka_dir+"/kuruppa.jpg", new ImageInfo("くるっぱ（久留米市のゆるキャラ）", "福岡"));  
 
-  //appear_image_tf  =  new ImageTransformer(new PVector(width/2 , height + current_image.height/2),
-  //                                         new PVector(current_image.width, current_image.height),
-  //                                         new PVector(width/2, height*3/5),
-  //                                         new PVector(current_image.width, current_image.height),
-  //                                         5000);
+  appear_image_tf  =  new ImageTransformer(new PVector(width/2 , height + current_image.height/2),
+                                           new PVector(current_image.width, current_image.height),
+                                           new PVector(width/2, height*3/5),
+                                           new PVector(current_image.width, current_image.height),
+                                           3000);
                                            
   //swipe_image_tf   =  new ImageTransformer(new PVector(width/2, height*3/5),
   //                                         new PVector(current_image.width, current_image.height),
@@ -148,7 +149,7 @@ void setup()
 
   unit_timer = new Timer(5*1000);
   //game_timer = new Timer(5*1000*image_names.size());
-  game_timer = new Timer(15*1000);
+  game_timer = new Timer(60*1000);
 
   result_display = new ResultDisplay(3*1000);
 
@@ -169,7 +170,7 @@ void draw()
       game_timer.reset();
       unit_timer.reset();
 
-      //appear_image_tf.timer.reset();
+      appear_image_tf.timer.reset();
       //draw_hand();
       break;
     case main:
@@ -184,7 +185,7 @@ void draw()
       
       appear_image();
 
-      //image_tf.transform();
+      //appear_image_tf.transform();
     
       unit_timer.start();
     
@@ -202,6 +203,7 @@ void draw()
       {
         score_board.toggle(ScoreBoard.reduce);
         result_display.activate(result_display.timeup);
+        //appear_image_tf.reset();
         if (image_names.size() > 0 ) 
         {
           update_image();
@@ -227,7 +229,8 @@ void draw()
           score_board.toggle(ScoreBoard.reduce);
         }
         if (image_names.size() > 0) 
-        {
+        {        
+          //appear_image_tf.reset();
           update_image();
         }
       }

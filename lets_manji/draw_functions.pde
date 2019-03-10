@@ -8,11 +8,11 @@ void draw_time_gage()
 }
 
 void draw_background() {
-  fill(0, 255, 0);
+  fill(0, 185, 0);
   rect(0, height/5, width, height);
-  fill(115, 66, 41);
+  fill(195, 146, 121);
   triangle(width/2, height/10, 0, height, width, height);
-  fill(0, 0, 255);
+  fill(100, 150, 255);
   rect(0, 0, width, height/5);
 }
 
@@ -147,9 +147,9 @@ void draw_hand()
   {
     for (Finger finger : hand.getFingers())
     {
-      textSize(80);
       finger.drawBones();
-      finger.drawJoints();
+      fill(255, 0, 0);
+      finger.drawJoints(20);
     }
   }
   PVector right_hand_pos = get_right_hand_pos();

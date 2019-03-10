@@ -17,14 +17,15 @@ class ImageTransformer
   
   void transform()
   {
-    timer.start();
-    timer.update();
-    
     if (timer.should_reset()){
       return;
     }
-
+    
+    timer.start();
+    timer.update();
+    
     float rate = (float)timer.duration() / (float)timer.time_limit;
+    rate = rate > 1.0 ? 1.0 : rate;
     
     PVector sub_next_pos = next_pos.copy();
     PVector sub_prev_pos = prev_pos.copy();
@@ -41,10 +42,15 @@ class ImageTransformer
   
     PVector size_diff = sub_next_size.sub(prev_size);
     PVector current_size = sub_prev_size.add(size_diff.mult(rate));
-     current_image = loadImage(current_image_name); 
+    //current_image = loadImage(current_image_name); 
     if((int)current_size.x > 0 && (int)current_size.y > 0){
       current_image.resize((int)current_size.x, (int)current_size.y);
     }
   
+  }
+  
+  void reset()
+  {
+    timer.reset();
   }
 }
