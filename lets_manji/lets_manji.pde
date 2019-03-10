@@ -88,7 +88,7 @@ void setup()
   image_info_table.put(other_dir+"/hokkaido.jpeg", new ImageInfo("北海道の図", "北海道"));
   image_info_table.put(other_dir+"/itukushimazinzya.jpeg", new ImageInfo("厳島神社", "広島"));
   image_info_table.put(other_dir+"/kaminarimon.jpg", new ImageInfo("浅草寺", "東京"));
-  image_info_table.put(other_dir+"/kaparu.jpg", new ImageInfo("カパル（志木市のゆるキャラ）", "埼玉"));
+  image_info_table.put(other_dir+"/kaparu.jpg", new ImageInfo("カパル\n（志木市のゆるキャラ）", "埼玉"));
   image_info_table.put(other_dir+"/nagoya-station.jpg", new ImageInfo("名古屋駅", "愛知"));
   image_info_table.put(other_dir+"/nagoyazyo.jpg", new ImageInfo("名古屋城", "愛知"));
   image_info_table.put(other_dir+"/ropongi.jpg", new ImageInfo("六本木ヒルズ", "東京"));
@@ -127,7 +127,7 @@ void setup()
   image_info_table.put(fukuoka_dir+"/omikoshi_hakata_gion_yamakasa.png", new ImageInfo("博多祇園山笠", "福岡"));
   image_info_table.put(fukuoka_dir+"/rakusuien.jpg", new ImageInfo("楽水園", "福岡"));
   image_info_table.put(fukuoka_dir+"/sasaguri-kyudainomori.jpg", new ImageInfo("笹栗九大の森", "福岡"));
-  image_info_table.put(fukuoka_dir+"/shinshin.jpg", new ImageInfo("博多ラーメンshinshin", "福岡"));
+  image_info_table.put(fukuoka_dir+"/shinshin.jpg", new ImageInfo("博多ラーメン\nshinshin", "福岡"));
   image_info_table.put(fukuoka_dir+"/taihouramen.jpg", new ImageInfo("久留米大砲ラーメン", "福岡"));
   image_info_table.put(fukuoka_dir+"/tetunabe.jpg", new ImageInfo("鉄なべ", "福岡"));
   image_info_table.put(fukuoka_dir+"/tikugogawa-syokaikyo.jpg", new ImageInfo("筑後川昇開橋", "福岡"));
@@ -138,7 +138,7 @@ void setup()
   image_info_table.put(fukuoka_dir+"/yahuokudo-mu.jpg", new ImageInfo("ヤフオクドーム", "福岡"));
   image_info_table.put(fukuoka_dir+"/yakei.jpg", new ImageInfo("福岡市の夜景", "福岡"));
   image_info_table.put(fukuoka_dir+"/yusentei.jpg", new ImageInfo("友泉亭公園", "福岡"));
-  image_info_table.put(fukuoka_dir+"/kuruppa.jpg", new ImageInfo("くるっぱ（久留米市のゆるキャラ）", "福岡"));  
+  image_info_table.put(fukuoka_dir+"/kuruppa.jpg", new ImageInfo("くるっぱ\n（久留米市のゆるキャラ）", "福岡"));
 
   appear_image_tf  =  new ImageTransformer(new PVector(width/2 , height + current_image.height/2),
                                            new PVector(current_image.width, current_image.height),
