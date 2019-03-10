@@ -138,3 +138,19 @@ class ResultDisplay
     return is_active;
   }
 }
+
+void draw_hand()
+{
+  for (Hand hand : leap.getHands())
+  {
+    for (Finger finger : hand.getFingers())
+    {
+      textSize(80);
+      finger.drawBones();
+      finger.drawJoints();        
+    }
+  }
+  PVector right_hand_pos = get_right_hand_pos();
+  fill(0, 200, 0);
+  ellipse(right_hand_pos.x, right_hand_pos.y, 25, 25);
+}
