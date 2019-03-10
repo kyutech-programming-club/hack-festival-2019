@@ -122,7 +122,7 @@ void setup()
   image_info_table.put(fukuoka_dir+"/motunabe.jpg", new ImageInfo("もつ鍋", "福岡"));
   image_info_table.put(fukuoka_dir+"/nehanzou.jpg", new ImageInfo("南蔵院", "福岡"));
   image_info_table.put(fukuoka_dir+"/nishikouen-kouunzinzya.jpg", new ImageInfo("光雲神社", "福岡"));
-  image_info_table.put(fukuoka_dir+"/omikoshi_hakata_gion_yanakasa.png", new ImageInfo("博多祇園山笠", "福岡"));
+  image_info_table.put(fukuoka_dir+"/omikoshi_hakata_gion_yamakasa.png", new ImageInfo("博多祇園山笠", "福岡"));
   image_info_table.put(fukuoka_dir+"/rakusuien.jpg", new ImageInfo("楽水園", "福岡"));
   image_info_table.put(fukuoka_dir+"/sasaguri-kyudainomori.jpg", new ImageInfo("笹栗九大の森", "福岡"));
   image_info_table.put(fukuoka_dir+"/shinshin.jpg", new ImageInfo("博多ラーメンshinshin", "福岡"));
