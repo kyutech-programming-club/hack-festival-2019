@@ -113,7 +113,7 @@ class ResultDisplay
   {
     background(0, 255, 255, 200);
     textSize(48);
-    text("Thank you for playing", width/2, height/2);
+    text("You are good player", width/2, height/2);
     score_board.draw();
   }
   
@@ -129,7 +129,7 @@ class ResultDisplay
   {
     background(255, 255, 0, 200);
     textSize(48);
-    text("Thank you for playing", width/2, height/2);
+    text("You are poor player", width/2, height/2);
     score_board.draw();
   }
 
