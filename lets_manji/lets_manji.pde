@@ -221,7 +221,7 @@ void draw()
         score_board.toggle(ScoreBoard.reduce);
         result_display.activate(result_display.timeup);
         miss_player.play();
-        miss_player.play();
+        miss_player.rewind();
         //appear_image_tf.reset();
         if (image_names.size() > 0 ) 
         {
@@ -268,13 +268,15 @@ void draw()
       result_display.activate(result_display.finish);
       break;
     case result:
-      if (score_board.get() > 500)
+      if (score_board.get() >= 500)
       {
-        result_display.activate(result_display.good_finish);    
+        result_display.activate(result_display.good_finish);
+        happy_player.play();
       }
       else
       {
-        result_display.activate(result_display.bad_finish);    
+        result_display.activate(result_display.bad_finish);
+        bad_player.play();
       }
       break;
   }
@@ -298,6 +300,8 @@ void keyReleased()
   else if (mode == result)
   {
     mode = intro;
+    bad_player.rewind();
+    happy_player.rewind();
   }
 }
 
